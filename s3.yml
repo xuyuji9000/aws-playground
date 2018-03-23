@@ -1,0 +1,17 @@
+# {
+#     "Resources" : {
+#         "HelloBucket" : {
+#             "Type" : "AWS::S3::Bucket",
+#             "Properties" : {
+#                "AccessControl" : "PublicRead"
+#             }
+#         }
+#     }
+# }
+AWSTemplateFormatVersion: 2010-09-09
+Description: This template contain a s3 resource.
+Resources:
+  HelloBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: PublicRead
