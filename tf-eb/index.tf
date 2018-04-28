@@ -13,6 +13,15 @@ data "aws_ami" "instance_ami" {
   }
 }
 
+data "aws_elastic_beanstalk_solution_stack" "solution" {
+  most_recent = true
+  name_regex = "^64bit Amazon Linux (.*) running Docker (.*)$"
+}
+
 output "ami" {
   value = "${data.aws_ami.instance_ami.id}"
+}
+
+output "solution" {
+  value = "${data.aws_elastic_beanstalk_solution_stack.solution.name}"
 }
