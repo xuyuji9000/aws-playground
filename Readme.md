@@ -25,3 +25,9 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 ## Workshop 1: Deploy your first application on IaC
 
 During this workshop, we will deploy **node-playground** to Elastic Beanstalk docker stack. Basic understanding of docker needed.
+
+## Workshop 2: Wechat IP Whitelisting
+
+## Workshop 3: Infrastructure with database
+
+## Workshop 4: Continuous Delivery
