@@ -1,4 +1,8 @@
-Define a vanilla Elastic Beanstalk Docker environment.
+# Steps
+
+1. Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environment-preparation) get yourself prepared for the workshop
+
+2. ...
 
 # Commands
 
