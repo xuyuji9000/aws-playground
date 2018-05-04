@@ -22,12 +22,12 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 
 4. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) eb with pip
 
-## Workshop 1: Deploy your first application on IaC
+## Workshop 1: Deploy your first application
 
 During this workshop, we will deploy **node-playground** to Elastic Beanstalk docker stack. Basic understanding of docker needed.
 
 ## Workshop 2: Wechat IP Whitelisting
 
-## Workshop 3: Infrastructure with database
+## Workshop 3: 2-tier Application
 
 ## Workshop 4: Continuous Delivery
