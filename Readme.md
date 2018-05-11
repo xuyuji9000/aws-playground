@@ -1,14 +1,14 @@
 This project is for AWS Infrastructure as Code(IaC) interactive workshops.
 
-# About the Mentor?
+# About the Mentor
 
 Karl is a junior SRE (Site Resilience Engineer) specialized in AWS Infrastructure as Code. He has an interest in education and hates how public education system systematically deletes the joy of learning. As he studies more about AWS in his job, he creates this workshop series to share what he learned with the community.
 
-# What is IaC
+# What is IaC?
 
 Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools. More on: https://en.wikipedia.org/wiki/Infrastructure_as_Code.
 
-# Why IaC
+# Why IaC?
 
 So you receive this unpleasant notification that a server is unreachable. You follow your usual quick fix routines (for example: flip through the logs to see what has happened), only to find out that the server has actually crashed. You freeze! Immediately, you get flashbacks of the hustle that you had to go through while trying to configure that server. You try to recall every component you had installed on the dead machine, plus their versions. It strikes you that you cannot even recall the order in which everything was installed, along with the nitty gritty. More one: https://www.thoughtworks.com/insights/blog/infrastructure-code-reason-smile.
 
