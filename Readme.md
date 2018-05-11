@@ -1,4 +1,4 @@
-This project is for aws Infrastructure as Code(IaC) interactive workshops.
+This project is for AWS Infrastructure as Code(IaC) interactive workshops.
 
 # About the Mentor?
 
