@@ -38,8 +38,27 @@ Use technology like Elastic Beanstalk, Docker, Terraform to make a reproducible 
 
 Elastic Beanstalk + Nat Gateway Cloudformation infrastructure as code interactive workshop. This setup can be used to help solving the Wechat Official Account IP whitelisting requirement.
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/coderbunker/aws-playground/blob/master/workshop2.png "")
 
 ## Workshop 3: 2-tier Application
 
-## Workshop 4: Continuous Delivery
+Coming Soon
+
+## Workshop 4: Debugging under AWS cloud context
+
+* Go back to documentation, training, example and communities
+* Use flow log
+* Use cloudwatch
+
+## Workshop 5: Continuous Delivery
+
+Use Code Pipeline and Code Build
+
+# FAQ
+
+** What is AWS? **
+Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
+** What is Docker? **
+Docker is the computer program which does containerization.
+** What is Cloudformation? **
+Cloudformation is AWS only IaC tool, open source counterparts terraform.
