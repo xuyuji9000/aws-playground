@@ -2,7 +2,7 @@ This project is for AWS Infrastructure as Code(IaC) interactive workshops.
 
 # About the Mentor
 
-Karl is a junior SRE (Site Resilience Engineer) specialized in AWS Infrastructure as Code. He has an interest in education and hates how public education system systematically deletes the joy of learning. As he studies more about AWS in his job, he creates this workshop series to share what he learned with the community.
+Karl is a junior SRE (Site Reliability Engineer) specialized in AWS Infrastructure as Code. He has an interest in education and hates how public education system systematically deletes the joy of learning. As he studies more about AWS in his job, he creates this workshop series to share what he learned with the community.
 
 # What is IaC?
 
