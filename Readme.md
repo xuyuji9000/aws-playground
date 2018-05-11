@@ -66,5 +66,5 @@ Use Code Pipeline and Code Build
 
 5. **What is reproducible deployment environment?**
 
-6. **Why create interactive workshops?** Base on every new features, it create a corresponding hands on example to play with.
+6. **Why create interactive workshops?** Base on every new features, it creates a corresponding hands on example to play with.
 
