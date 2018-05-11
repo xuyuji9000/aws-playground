@@ -56,11 +56,19 @@ Use Code Pipeline and Code Build
 
 # FAQ
 
-**What is AWS?**
+1. What is AWS?
 Amazon Web Services (AWS) is a secure cloud services platform, offering compute power, database storage, content delivery and other functionality to help businesses scale and grow.
 
-**What is Docker?**
+2. What is Docker?**
 Docker is the computer program which does containerization.
 
-**What is Cloudformation?**
+3. What is Cloudformation?**
 Cloudformation is AWS only IaC tool, open source counterparts terraform.
+
+4. What is Elastic Beanstalk?
+
+5. What is reproducible deployment environment?
+
+6. Why create interactive workshops?
+Base every new features, it create a corresponding hands on example to play with.
+
