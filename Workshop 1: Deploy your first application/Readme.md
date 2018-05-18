@@ -70,8 +70,14 @@
     terraform apply
     ```
 
-4. Destroy stack
+
+4. Connect to  Elastic Beanstalk application and environment
 
     ```bash
-    terraform destroy
+    eb init
+    ```
+5. Deploy application
+
+    ```bash
+    eb deploy
     ```
