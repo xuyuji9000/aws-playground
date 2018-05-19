@@ -1,9 +1,6 @@
-# Steps
+# Prerequisite
 
-1. Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environment-preparation) get yourself prepared for the workshop
-
-2. ...
-
+Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environment-preparation) get yourself prepared for the workshop
 
 # Workflows
 
