@@ -1,6 +1,6 @@
 provider "aws" {
   region = "ap-southeast-1"
-  shared_credentials_file = "/Users/yogiman/.aws/credentials"
+  shared_credentials_file = "~/.aws/credentials"
 }
 
 # data "aws_ami" "instance_ami" {
