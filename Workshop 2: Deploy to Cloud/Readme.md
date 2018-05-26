@@ -9,3 +9,23 @@ Create aws account, install aws cli, install eb cli.
 2. [Install](https://github.com/aws/aws-cli/issues/727) AWS cli with Homebrew
 
 3. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) eb with pip
+
+# Commands
+
+1. Create Elastic Beanstalk application
+
+    ```bash
+    eb init
+    ```
+
+2. Create Environment
+
+    ```bash
+    eb create
+    ```
+
+3. Deploy application
+
+    ```bash
+    eb deploy
+    ```
