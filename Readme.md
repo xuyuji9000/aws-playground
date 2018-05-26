@@ -22,13 +22,7 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 
 ## Prepare the environment
 
-1. [Create](https://portal.aws.amazon.com/billing/signup#/start) an aws account, ignore this step if you already got one.
-
-2. [Install](https://github.com/aws/aws-cli/issues/727) AWS cli with Homebrew
-
 3. [Install](http://brewformulas.org/Terraform) terraform with Homebrew
-
-4. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) eb with pip
 
 ## Workshop 1: Containerization
 

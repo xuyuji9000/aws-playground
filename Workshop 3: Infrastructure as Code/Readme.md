@@ -4,28 +4,6 @@ Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environmen
 
 # Workflows
 
-## local docker workflow
-
-1. Build Docker image:
-
-    ```bash
-    pushd node-playground
-    docker build -t node-playground .
-    popd
-    ```
-
-2. Run Docker container:
-
-    ```bash
-    docker run -d -p 8000:8000 node-playground
-    ```
-
-3. Check your application
-
-    ```bash
-    open http://localhost:8000
-    ```
-
 ## vanilla elastic beanstalk workflow
 
 1. Create Elastic Beanstalk application
