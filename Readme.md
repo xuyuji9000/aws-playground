@@ -30,29 +30,30 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 
 4. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) eb with pip
 
-## Workshop 1: Deploy your first application
+## Workshop 1: Containerization
 
-Use technology like Elastic Beanstalk, Docker, Terraform to make a reproducible deployment environment.Basic understanding of docker needed.
+In this workshop, we will use Dockerfile to containerize a simple Nodejs project. Along the way, we will understand the syntax of Dockerfile, know what is ports and hands on run the application.
 
-## Workshop 2: Wechat IP Whitelisting
+## Workshop 2: Deploy to the cloud
 
-Elastic Beanstalk + Nat Gateway Cloudformation infrastructure as code interactive workshop. This setup can be used to help solving the Wechat Official Account IP whitelisting requirement.
+With a working application, we now can deploy it to AWS Elasitc Beanstalk. Along the way, we will be able to know the workflow with Elatic Beanstalk.
 
-![alt text](https://github.com/coderbunker/aws-playground/blob/master/workshop2.png "")
+## Workshop 3: Infrastructure as Code
 
-## Workshop 3: 2-tier Application
+In this workshop, we will use terraform script to describe the Elatic Beanstalk environment, which we will deploy application to.
 
-Coming Soon
+## Workshop 4: Multi-tier Application
 
-## Workshop 4: Debugging under AWS cloud context
+In this workshop, we will deploy a multi-tier application. Along the way, we will understand why use multi-tier application architecture.
+
+## Workshop 5: Debugging under AWS cloud context
 
 * Go back to documentation, training, example and communities
 * Use flow log
-* Use cloudwatch
 
-## Workshop 5: Continuous Delivery
+## Workshop 6: Continuous Delivery
 
-Use Code Pipeline and Code Build
+Use Code Pipeline and Code Build.
 
 # FAQ
 
