@@ -20,10 +20,6 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 
 # Workshops
 
-## Prepare the environment
-
-3. [Install](http://brewformulas.org/Terraform) terraform with Homebrew
-
 ## Workshop 1: Containerization
 
 In this workshop, we will use Dockerfile to containerize a simple Nodejs project. Along the way, we will understand the syntax of Dockerfile, know what is ports and hands on run the application.

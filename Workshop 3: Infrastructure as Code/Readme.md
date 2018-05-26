@@ -1,12 +1,14 @@
 # Prerequisite
 
-Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environment-preparation) get yourself prepared for the workshop
+## Mac
 
-# Workflows
+[Install](http://brewformulas.org/Terraform) terraform with Homebrew.
 
-## IaC powered workflow
+## Ubuntu
 
+[Install](https://www.terraform.io/intro/getting-started/install.html) terraform.
 
+# Commands
 1. init local terraform working environment
 
     ```bash
