@@ -4,26 +4,6 @@ Follow the [Environment](https://github.com/xuyuji9000/aws-playground#environmen
 
 # Workflows
 
-## vanilla elastic beanstalk workflow
-
-1. Create Elastic Beanstalk application
-
-    ```bash
-    eb init
-    ```
-
-2. Create Environment
-
-    ```bash
-    eb create
-    ```
-
-3. Deploy application
-
-    ```bash
-    eb deploy
-    ```
-
 ## IaC powered workflow
 
 
