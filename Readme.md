@@ -32,18 +32,22 @@ With a working application, we now can deploy it to AWS Elasitc Beanstalk. Along
 
 In this workshop, we will use terraform script to describe the Elatic Beanstalk environment, which we will deploy application to.
 
-## Workshop 4: Multi-tier Application
+## Workshop 4: Monitorinng your Application
 
-In this workshop, we will deploy a multi-tier application. Along the way, we will understand why use multi-tier application architecture.
+Use cloudwatch to monitoring your application.
 
-## Workshop 5: Debugging under AWS cloud context
+## Workshop 5: Multi-tier Application
+
+Use Lambda function to get vpc info to help with a better design.
+
+## Workshop 6: Debugging under AWS cloud context
 
 * Go back to documentation, training, example and communities
 * Use flow log
 
-## Workshop 6: Continuous Delivery
+## Workshop 7: Continuous Delivery
 
-Use Code Pipeline and Code Build.
+Use jenkins for Continuous Delivery.
 
 # FAQ
 
