@@ -8,7 +8,7 @@ Create aws account, install aws cli, install eb cli.
 
 2. [Install](https://github.com/aws/aws-cli/issues/727) AWS cli with Homebrew
 
-3. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html) eb with pip
+3. [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-osx.html) eb cli with Homebrew
 
 # Commands
 
