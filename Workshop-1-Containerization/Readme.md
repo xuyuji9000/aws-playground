@@ -8,4 +8,4 @@ Install Docker.
 
 ## Ubuntu
 
-[Install Docker for Ubuntu](https://runnable.com/docker/install-docker-on-linux)
+[Install Docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
