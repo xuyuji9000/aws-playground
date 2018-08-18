@@ -12,6 +12,8 @@ Create aws account, install aws cli, install eb cli.
 
 # Commands
 
+Before starting command, you should be inside the `./node-playground` directory.
+
 1. Create Elastic Beanstalk application
 
     ```bash
