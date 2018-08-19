@@ -12,7 +12,7 @@ Dependencies need to be prepared before the workshop.
 
 ## Mac
 
-[Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
+- [Install Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
 
 ## Ubuntu
 
@@ -24,12 +24,12 @@ Dependencies need to be prepared before the workshop.
 
 # Install `awscli`
 
-[Install](https://github.com/aws/aws-cli/issues/727) AWS cli with Homebrew
+- [Install](https://github.com/aws/aws-cli/issues/727) AWS cli with Homebrew
 
 # Install `awsebcli`
 
-[Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-osx.html) eb cli with Homebrew
+- [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-osx.html) eb cli with Homebrew
 
 # Install `terraform`
 
-[Install](https://www.bonusbits.com/wiki/HowTo:Install_Terraform_on_macOS) terraform on Mac
+- [Install](https://www.bonusbits.com/wiki/HowTo:Install_Terraform_on_macOS) terraform on Mac
