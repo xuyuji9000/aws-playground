@@ -26,3 +26,5 @@ Dependencies need to be prepared before the workshop.
 [Install](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install-osx.html) eb cli with Homebrew
 
 # Install `terraform`
+
+[Install](https://www.bonusbits.com/wiki/HowTo:Install_Terraform_on_macOS) terraform on Mac
