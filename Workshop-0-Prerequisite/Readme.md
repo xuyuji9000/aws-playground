@@ -4,7 +4,9 @@ Dependencies need to be prepared before the workshop.
 
 - [Create](https://portal.aws.amazon.com/billing/signup#/start) an aws account, ignore this step if you already got one.
 
-- Create an AWS IAM user with admin permission and programmic access.
+P.S. Create AWS account atleast 24h prior to workshop (otherwise account verifocation may not have completed and eb create command fails)
+
+- [Create](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) an AWS IAM user with admin permission.
 
 # Install Docker.
 
@@ -14,7 +16,10 @@ Dependencies need to be prepared before the workshop.
 
 ## Ubuntu
 
-[Install Docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
+- [Install Docker for Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)
+
+- Set user as part of docker usergroup to avoid using sudo on each command
+
 
 
 # Install `awscli`
