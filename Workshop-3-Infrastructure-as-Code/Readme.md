@@ -1,13 +1,3 @@
-# Prerequisite
-
-## Mac
-
-[Install](http://brewformulas.org/Terraform) terraform with Homebrew.
-
-## Ubuntu
-
-[Install](https://www.terraform.io/intro/getting-started/install.html) terraform.
-
 # Commands
 1. init local terraform working environment
 
