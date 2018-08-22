@@ -1,0 +1,1 @@
+This workshop introduces how to use S3 serve static website.
