@@ -20,6 +20,10 @@ So you receive this unpleasant notification that a server is unreachable. You fo
 
 # Workshops
 
+## Workshop 0: Prerequisite
+
+Introduce prerequisite to this workshop series.
+
 ## Workshop 1: Containerization
 
 In this workshop, we will use Dockerfile to containerize a simple Nodejs project. Along the way, we will understand the syntax of Dockerfile, know what is ports and hands on run the application.
@@ -32,22 +36,17 @@ With a working application, we now can deploy it to AWS Elasitc Beanstalk. Along
 
 In this workshop, we will use terraform script to describe the Elatic Beanstalk environment, which we will deploy application to.
 
-## Workshop 4: Monitorinng your Application
+## Workshop 4: Static Site with S3
 
-Use cloudwatch to monitoring your application.
+Host static website with S3 is a very low overhead practice.
 
-## Workshop 5: Multi-tier Application
+## Workshop 5: Lambda
 
-Use Lambda function to get vpc info to help with a better design.
+Create a Lambda function.
 
-## Workshop 6: Debugging under AWS cloud context
+## Workshop 6: API Gateway
 
-* Go back to documentation, training, example and communities
-* Use flow log
-
-## Workshop 7: Continuous Delivery
-
-Use jenkins for Continuous Delivery.
+Use API Gateway to set up http endpoint to lambda function.
 
 # FAQ
 
