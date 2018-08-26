@@ -24,6 +24,16 @@ EOF
 }
 
 
+resource "aws_s3_bucket" "lambda-playground-kx" {
+  bucket = "lambda-playground-kx"
+  website {
+    index_document = "index.html"
+    error_document = "error.html"
+  }
+}
+
+
+
 resource "aws_iam_role" "lambda_playground" {
   name = "lambda_playground"
 
@@ -46,7 +56,7 @@ EOF
 
 resource "aws_lambda_function" "lambda_playground" {
   function_name    = "lambda_playground"
-  s3_bucket        = "lambda-playground-kx"
+  s3_bucket        = "${aws_s3_bucket.lambda-playground-kx.id}"
   s3_key           = "index.zip"
   role             = "${aws_iam_role.lambda_playground.arn}"
   handler          = "index.handler"
