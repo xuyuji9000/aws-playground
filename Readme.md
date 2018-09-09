@@ -1,3 +1,5 @@
+This project has migrated to [coderbunker/aws-playground](https://github.com/coderbunker/aws-playground)
+
 This project is for AWS Infrastructure as Code(IaC) interactive workshops.
 
 # About the Mentor
