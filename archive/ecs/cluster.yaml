@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Playground of ECS Cluster
+
+Parameters:
+  Project:
+    Default: playground
+    Description: Name of the Project
+    Type: String
+
+  ImageId:
+    Default: ami-076e3ad6673569cf3
+    Description: AWS server instance id.
+    Type: String
+
+  KeyName:
+    Default: cn_mj_ec2_instance
+    Description: SSH key name.
+    Type: String
+
+  PublicSubnetId:
+    Default: subnet-ed20ad89
+    Description: Public accessible subnet id.
+    Type: String
+
+  VPCID:
+    Default: vpc-f7d29293
+    Description: VPC ID.
+    Type: String
+
+  InstanceType:
+    Default:  m3.medium 
+    Description: Instance type.
+    Type: String
+
+  IamRoleInstanceProfile:
+    Default: arn:aws-cn:iam::905678641422:instance-profile/ecsInstanceRole
+    Type: String
+    Description: ECS Instance IAM Role.
+
+Resources:
+  ECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub ${Project}-kx
+
+  LaunchConfig:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      AssociatePublicIpAddress: true
+      KeyName: !Ref KeyName
+      ImageId: !Ref ImageId
+      IamInstanceProfile: !Ref IamRoleInstanceProfile
+      SecurityGroups:
+        - !Ref SecurityGroup
+      InstanceType: !Ref InstanceType
+      UserData:
+        Fn::Base64: !Sub |
+            #!/bin/bash -ex
+            echo ECS_CLUSTER=${ECSCluster} >> /etc/ecs/ecs.config
+
+  AutoScalingGroup:
+    Type: AWS::AutoScaling::AutoScalingGroup
+    Properties:
+      VPCZoneIdentifier:
+        - !Ref PublicSubnetId
+      LaunchConfigurationName: !Ref LaunchConfig
+      MinSize: 2
+      MaxSize: 2
+      Tags:
+      - Key: Name
+        Value: !Sub ${Project}-kx
+        PropagateAtLaunch: true
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Sub ${Project}-kx-sg
+      VpcId: !Ref VPCID
+      Tags:
+        - Key: Name
+          Value: !Sub ${Project}-kx-sg
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '21'
+          ToPort: '22'
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '1024'
+          ToPort: '1048'
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '80'
+          ToPort: '80'
