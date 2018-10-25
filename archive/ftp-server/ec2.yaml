@@ -1,0 +1,120 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Playground of creating an instance.
+
+Parameters:
+  Project:
+    Default: playground
+    Description: Name of the Project
+    Type: String
+
+  ImageId:
+    Default: ami-0a4eaf6c4454eda75
+    Description: AWS server instance id.
+    Type: String
+
+  KeyName:
+    Default: cn_mj_ec2_instance
+    Description: SSH key name.
+    Type: String
+
+  PublicSubnetId:
+    Default: subnet-ed20ad89
+    Description: Public accessible subnet id.
+    Type: String
+
+  VPCID:
+    Default: vpc-f7d29293
+    Description: VPC ID.
+    Type: String
+
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      -
+        Label:
+          default: "Namespace"
+        Parameters:
+          - Project
+      -
+        Label:
+          default: "Tech spec"
+        Parameters:
+          - ImageId
+          - KeyName
+          - PublicSubnetId
+          - VPCID
+
+Resources:
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      KeyName: !Ref KeyName
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: "true"
+          DeviceIndex: "0"
+          GroupSet:
+            - !Ref SecurityGroup
+          SubnetId: !Ref PublicSubnetId
+      UserData:
+        Fn::Base64: !Sub |
+            #!/bin/bash -ex
+            yum install -y vsftpd
+            # parameters
+            FTP_CONFIG=/etc/vsftpd/vsftpd.conf
+            FTP_DIRECTORY=/var/www/ftp-data
+            FTP_USER=ftp-client
+            FTP_PASSWORD=ftp-client
+
+            sed -i 's/anonymous_enable=YES/anonymous_enable=NO/g' $FTP_CONFIG
+            sed -i 's/#chroot_local_user=YES/chroot_local_user=YES/g' $FTP_CONFIG
+            echo "# new configuration
+            pasv_enable=YES
+            pasv_min_port=1024
+            pasv_max_port=1048
+            pasv_address=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)" | tee -a $FTP_CONFIG
+
+
+            mkdir -p $FTP_DIRECTORY
+            find $FTP_DIRECTORY -type d -exec chmod 777 {} \;
+
+            echo "local_root=$FTP_DIRECTORY" | tee -a $FTP_CONFIG
+
+            # Create user
+            adduser $FTP_USER
+            echo $FTP_PASSWORD | passwd --stdin $FTP_USER
+            usermod -d $FTP_DIRECTORY $FTP_USER
+            chown $FTP_USER:$FTP_USER $FTP_DIRECTORY
+
+            # Start vsftpd
+            service vsftpd start
+            chkconfig --level 345 vsftpd on
+
+            # /opt/aws/bin/cfn-signal -e $? --stack ${AWS::StackName} --resource Ec2Instance --region ${AWS::Region}
+
+      Tags:
+        -
+          Key: Name
+          Value: !Sub ${Project}-kx
+
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Sub ${Project}-kx-sg
+      VpcId: !Ref VPCID
+      Tags:
+        - Key: Name
+          Value: !Sub ${Project}-kx-sg
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '21'
+          ToPort: '22'
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '1024'
+          ToPort: '1048'
+        - IpProtocol: tcp
+          CidrIp: "0.0.0.0/0"
+          FromPort: '80'
+          ToPort: '80'
