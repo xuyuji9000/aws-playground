@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Template for AWS Cloudformation."
+Parameters:
+  AMIName:
+    Type: String
+    Default: amzn-ami-*-amazon-ecs-optimized
+    Description: Name of the Amazon Machine Image (AMI) to use, including a wildcardmatch for use with the ami Query
+  AMIOwners:
+    Type: String
+    Default: amazon
+    Description: Name or ID of the Amazon AWS account who is the owner of the images
+Resources:
+  getAmazonMachineImage:
+    Type: Custom::amiQuery
+    Properties:
+      ServiceToken: !Sub arn:aws-cn:lambda:${AWS::Region}:${AWS::AccountId}:function:amiQuery-prod
+      Name: !Ref AMIName
+      Owners:
+      - Ref: AMIOwners
+      Latest: true
+
+Outputs:
+  ImageId:
+    Description: "The image ID."
+    Value: !GetAtt getAmazonMachineImage.ImageId
+    Export:
+      Name: ImageId
