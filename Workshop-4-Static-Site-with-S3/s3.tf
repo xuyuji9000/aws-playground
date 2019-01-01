@@ -28,9 +28,13 @@ resource "aws_s3_bucket_policy" "b" {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::s3-static-site.yogiman.cn/*"
+            "Resource": "arn:aws:s3:::${var.s3-static-site}/*"
         }
     ]
 }
 POLICY
+}
+
+output "website" {
+  value = "${aws_s3_bucket.s3-static-site.website_endpoint}"
 }
