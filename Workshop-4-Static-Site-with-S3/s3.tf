@@ -9,6 +9,16 @@ variable "s3-static-site" {
   default = "s3-static-site.yogiman.cn"
 }
 
+variable "aws-account-id" {
+  type = "string"
+  default = "123456"
+}
+
+variable "aws-user-name" {
+  type = "string"
+  default = "tom"
+}
+
 resource "aws_s3_bucket" "s3-static-site" {
   bucket = "${var.s3-static-site}"
   website {
@@ -28,6 +38,15 @@ resource "aws_s3_bucket_policy" "b" {
             "Effect": "Allow",
             "Principal": "*",
             "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::${var.s3-static-site}/*"
+        },
+        {
+            "Sid": "DeployNewArtifact",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::${var.aws-account-id}:user/${var.aws-user-name}"
+            },
+            "Action":   ["s3:PutObject"],
             "Resource": "arn:aws:s3:::${var.s3-static-site}/*"
         }
     ]
