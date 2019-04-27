@@ -5,9 +5,52 @@ Parameters:
     Default: ecs-playground
     Description: Name of the cluster 
     Type: String
+  ECSRoleName:
+    Default: ecs-playground
+    Description: Name ECS > autoscaling > launchconfiguration > iamprofile role 
+    Type: String
+  ImageId:
+    Default: ami-06f9b7c717914a382
+    Description: ECS latest AMI image id 
+    Type: String
+  SecurityGroup:
+    Default: sg-0655b947704f11744
+    Description:  Security Group name
+    Type: String
+  InstanceType:
+    Description: The Instance Type
+    Type: String
+    Default: t3.small
+  KeyName:
+    Description: The Instance key name
+    Type: String
+    Default: ecs-playground
 
 Resources:
   Cluster:
     Type: AWS::ECS::Cluster
     Properties:
       ClusterName: !Sub ${ClusterName}
+  ECSLaunchConfiguration:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties: 
+      AssociatePublicIpAddress: true
+      IamInstanceProfile: !Ref IAMInstanceProfile
+      ImageId: !Ref ImageId
+      SecurityGroups: [!Ref SecurityGroup]
+      InstanceType: !Ref InstanceType
+      KeyName: !Ref KeyName
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash -xe
+          echo ECS_CLUSTER=${ClusterName} >> /etc/ecs/ecs.config
+
+
+  IAMInstanceProfile:
+    Type: 'AWS::IAM::InstanceProfile'
+    Properties:
+      Path: /
+      Roles:
+        - !Ref ECSRoleName
+      
+  
