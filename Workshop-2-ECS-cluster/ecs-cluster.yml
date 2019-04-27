@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "ECS template for AWS Cloudformation."
+Parameters:
+  ClusterName:
+    Default: ecs-playground
+    Description: Name of the cluster 
+    Type: String
+
+Resources:
+  Cluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: !Sub ${ClusterName}
