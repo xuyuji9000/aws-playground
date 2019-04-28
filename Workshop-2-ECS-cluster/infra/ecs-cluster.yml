@@ -33,7 +33,42 @@ Parameters:
     Description: The Instance key name
     Type: AWS::EC2::KeyPair::KeyName
     Default: ecs-playground
-
+  DesiredCapacity:
+    Description: Desired capacity of instances for ECS cluster
+    Type: Number
+    Default: 2
+  MinSize:
+    Description: Minimum size of instances for ECS cluster
+    Type: Number
+    Default: 2
+  MaxSize:
+    Description: Maximum size of instances for ECS cluster
+    Type: Number
+    Default: 2
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterGroups:
+      - 
+        Label: 
+          default: "ECS Capacity"
+        Parameters:
+          - DesiredCapacity
+          - MinSize
+          - MaxSize
+      - Label: 
+          default: "Network"
+        Parameters:
+          - VPC
+          - Subnets
+          - AvailabilityZones
+          - SecurityGroups
+      - Label:
+          default: "Autoscaling"
+        Parameters:
+          - InstanceType
+          - KeyName
+          - ECSRoleName
+          - ImageId
 Resources:
   Cluster:
     Type: AWS::ECS::Cluster
@@ -57,9 +92,9 @@ Resources:
     Properties:
       AvailabilityZones: !Ref AvailabilityZones
       Cooldown: '30'
-      DesiredCapacity: '1'
-      MinSize: '1'
-      MaxSize: '1'
+      DesiredCapacity: !Ref DesiredCapacity
+      MinSize: !Ref MinSize
+      MaxSize: !Ref MaxSize
       HealthCheckGracePeriod: '50'
       HealthCheckType: EC2
       LaunchConfigurationName: !Ref ECSLaunchConfiguration
