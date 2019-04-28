@@ -22,17 +22,16 @@ Parameters:
     Default: ami-06f9b7c717914a382
     Description: ECS latest AMI image id 
     Type: String
-  SecurityGroup:
-    Default: sg-0655b947704f11744
+  SecurityGroups:
     Description:  Security Group name
-    Type: String
+    Type: List<AWS::EC2::SecurityGroup::Id>
   InstanceType:
     Description: The Instance Type
     Type: String
     Default: t3.small
   KeyName:
     Description: The Instance key name
-    Type: String
+    Type: AWS::EC2::KeyPair::KeyName
     Default: ecs-playground
 
 Resources:
@@ -46,7 +45,7 @@ Resources:
       AssociatePublicIpAddress: true
       IamInstanceProfile: !Ref IAMInstanceProfile
       ImageId: !Ref ImageId
-      SecurityGroups: [!Ref SecurityGroup]
+      SecurityGroups: !Ref SecurityGroups
       InstanceType: !Ref InstanceType
       KeyName: !Ref KeyName
       UserData:
