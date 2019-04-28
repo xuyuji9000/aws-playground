@@ -5,6 +5,15 @@ Parameters:
     Default: ecs-playground
     Description: Name of the cluster 
     Type: String
+  VPC:
+    Description: The VPC for this cluster
+    Type: 'AWS::EC2::VPC::Id'
+  Subnets:
+    Description: List of subnets for the ECS Instances
+    Type: 'List<AWS::EC2::Subnet::Id>'
+  AvailabilityZones:
+    Description: List of Availability Zones
+    Type: 'List<AWS::EC2::AvailabilityZone::Name>'
   ECSRoleName:
     Default: ecs-playground
     Description: Name ECS > autoscaling > launchconfiguration > iamprofile role 
@@ -44,6 +53,30 @@ Resources:
         Fn::Base64: !Sub |
           #!/bin/bash -xe
           echo ECS_CLUSTER=${ClusterName} >> /etc/ecs/ecs.config
+  ECSAutoScalingGroup:
+    Type: 'AWS::AutoScaling::AutoScalingGroup'
+    Properties:
+      AvailabilityZones: !Ref AvailabilityZones
+      Cooldown: '30'
+      DesiredCapacity: '1'
+      MinSize: '1'
+      MaxSize: '1'
+      HealthCheckGracePeriod: '50'
+      HealthCheckType: EC2
+      LaunchConfigurationName: !Ref ECSLaunchConfiguration
+      MetricsCollection:
+        - Granularity: 1Minute
+      VPCZoneIdentifier: !Ref Subnets
+      Tags:
+        - PropagateAtLaunch: 'true'
+          Key: Name
+          Value: !Join 
+            - '-'
+            - - !Ref ClusterName
+              - Node
+        - PropagateAtLaunch: 'true'
+          Key: ECS_Cluster
+          Value: !Ref ClusterName
 
 
   IAMInstanceProfile:
