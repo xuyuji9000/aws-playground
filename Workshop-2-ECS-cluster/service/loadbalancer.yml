@@ -1,0 +1,60 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "ECS template for AWS Cloudformation."
+Parameters:
+  Project:
+    Default: ecs-playground
+    Description: Name of the cluster 
+    Type: String
+  Service:
+    Default: nginx
+    Description: Name of the service
+    Type: String
+  VPC:
+    Description: The VPC for this cluster
+    Type: 'AWS::EC2::VPC::Id'
+  Subnets:
+    Description: List of subnets for the ECS Instances
+    Type: 'List<AWS::EC2::Subnet::Id>'
+  SecurityGroups:
+    Description:  Security Group name
+    Type: List<AWS::EC2::SecurityGroup::Id>
+Resources:
+  ALB:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Scheme: internet-facing
+      Subnets: !Ref Subnets
+      LoadBalancerAttributes:
+      - Key: idle_timeout.timeout_seconds
+        Value: '50'
+      SecurityGroups: !Ref SecurityGroups
+      Tags:
+      - Key: Name
+        Value: !Sub ${Project}-${Service}
+
+  ALBListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    DependsOn: 
+      - ALBTargetGroup
+      - ALB
+    Properties:
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref ALBTargetGroup
+      LoadBalancerArn: !Ref ALB
+      Port: 80
+      Protocol: HTTP
+  ALBTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      Port: 80
+      Protocol: HTTP
+      TargetType: instance
+      VpcId: !Ref VPC
+Outputs:
+  ALB:
+    Description: A reference to the created Application Load Balancer's DNSName
+    Value: !GetAtt ALB.DNSName
+  ALBTargetGroup:
+    Description: A reference to the created target group
+    Value: !Ref ALBTargetGroup
