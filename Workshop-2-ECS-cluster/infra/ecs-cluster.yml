@@ -14,10 +14,6 @@ Parameters:
   AvailabilityZones:
     Description: List of Availability Zones
     Type: 'List<AWS::EC2::AvailabilityZone::Name>'
-  ECSRoleName:
-    Default: ecs-playground
-    Description: Name ECS > autoscaling > launchconfiguration > iamprofile role 
-    Type: String
   ImageId:
     Default: ami-06f9b7c717914a382
     Description: ECS latest AMI image id 
@@ -28,7 +24,7 @@ Parameters:
   InstanceType:
     Description: The Instance Type
     Type: String
-    Default: t3.small
+    Default: t2.small
   KeyName:
     Description: The Instance key name
     Type: AWS::EC2::KeyPair::KeyName
@@ -67,7 +63,6 @@ Metadata:
         Parameters:
           - InstanceType
           - KeyName
-          - ECSRoleName
           - ImageId
 Resources:
   Cluster:
@@ -118,6 +113,6 @@ Resources:
     Properties:
       Path: /
       Roles:
-        - !Ref ECSRoleName
+        - !Sub ${ClusterName}-instance-role
       
   

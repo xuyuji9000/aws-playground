@@ -1,10 +1,12 @@
-Decouple the cluster deployment into three pieces:
+# Steps
 
-- IAM Role
+1. Create VPC
 
-- VPC
+2. Create instance role
 
-- Cluster
+3. Get ecs AMI: `aws ec2 describe-images --filters "Name=name,Values=amzn-ami-*-amazon-ecs-optimized"`
+
+4. Create cluster
 
 
 # FQAs

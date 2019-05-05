@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Role ECS > autoscaling group > launchconfig "
 Parameters: 
-  RoleName:
+  ClusterName:
     Default: ecs-playground
     Description: Name of the iam role 
     Type: String
@@ -42,4 +42,4 @@ Resources:
                   - 'ec2:AuthorizeSecurityGroupIngress'
                 Resource:
                   - '*'
-      RoleName: !Ref RoleName
+      RoleName: !Sub ${ClusterName}-instance-role
