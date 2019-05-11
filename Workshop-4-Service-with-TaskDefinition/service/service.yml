@@ -9,6 +9,14 @@ Parameters:
     Default: nginx
     Description: Name of the service
     Type: String
+  ContainerPort:
+    Default: 80
+    Description: Port number of container
+    Type: Number
+  MemoryReservation:
+    Default: 128
+    Description: Soft memory limit for container, could exceed it when needed.
+    Type: Number
   DesiredCount:
     Default: 2
     Description: Number of containers running under service
@@ -82,7 +90,7 @@ Resources:
       TaskDefinition: !Ref TaskDefinition
       LoadBalancers:
         - ContainerName: web
-          ContainerPort: 80
+          ContainerPort: !Ref ContainerPort
           TargetGroupArn: !Ref ALBTargetGroup
 
   TaskDefinition:
@@ -92,16 +100,26 @@ Resources:
       ContainerDefinitions:
         - Name: web
           Essential: true
-          Image: nginx:1.15
-          Memory: 128
+          Image: yogiman/django-playground:latest
+          MemoryReservation: !Ref MemoryReservation
           PortMappings:
-            - ContainerPort: 80
+            - ContainerPort: !Ref ContainerPort
+          LogConfiguration:
+            LogDriver: awslogs
+            Options:
+              awslogs-group: !Ref CloudWatchLogsGroup
+              awslogs-region: !Ref AWS::Region
+  CloudWatchLogsGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Ref AWS::StackName
+      RetentionInDays: 365
   
 
-# Outputs:
-#   ALB:
-#     Description: A reference to the created Application Load Balancer's DNSName
-#     Value: !GetAtt ALB.DNSName
+Outputs:
+  ALB:
+    Description: A reference to the created Application Load Balancer's DNSName
+    Value: !GetAtt ALB.DNSName
 #   ALBTargetGroup:
 #     Description: A reference to the created target group
 #     Value: !Ref ALBTargetGroup
