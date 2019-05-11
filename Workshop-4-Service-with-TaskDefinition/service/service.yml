@@ -9,6 +9,10 @@ Parameters:
     Default: nginx
     Description: Name of the service
     Type: String
+  DesiredCount:
+    Default: 2
+    Description: Number of containers running under service
+    Type: String
   VPC:
     Description: The VPC for this cluster
     Type: 'AWS::EC2::VPC::Id'
@@ -70,7 +74,7 @@ Resources:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Sub ${Project}
-      DesiredCount: 1
+      DesiredCount: !Ref DesiredCount
       DeploymentConfiguration:
         MaximumPercent: 200
         MinimumHealthyPercent: 100
