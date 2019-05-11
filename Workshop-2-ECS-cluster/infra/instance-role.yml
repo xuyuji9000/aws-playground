@@ -14,7 +14,7 @@ Resources:
           - Effect: Allow
             Principal:
               Service:
-                - ec2.amazonaws.com
+                - ec2.amazonaws.com.cn
             Action:
               - 'sts:AssumeRole'
       Path: /
@@ -35,6 +35,7 @@ Resources:
                   - 'ecs:Poll'
                   - 'ecs:RegisterContainerInstance'
                   - 'ecs:Submit*'
+                  - 'ecs:StartTelemetrySession'
                   - 'elasticloadbalancing:Describe*'
                   - 'elasticloadbalancing:DeregisterInstancesFromLoadBalancer'
                   - 'elasticloadbalancing:RegisterInstancesWithLoadBalancer'
