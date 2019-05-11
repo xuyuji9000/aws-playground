@@ -41,6 +41,8 @@ Resources:
                   - 'elasticloadbalancing:RegisterInstancesWithLoadBalancer'
                   - 'ec2:Describe*'
                   - 'ec2:AuthorizeSecurityGroupIngress'
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
                 Resource:
                   - '*'
       RoleName: !Sub ${ClusterName}-instance-role
